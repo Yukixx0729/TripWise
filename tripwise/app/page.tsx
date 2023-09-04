@@ -6,8 +6,8 @@ export default async function Home() {
   let href = userId ? "/plan" : "/new-user";
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <div className="w-full max-w-[600px] mx-auto">
-        <h1 className="text-6xl mb-4">
+      <div className="w-full max-w-[650px] mx-auto">
+        <h1 className="text-6xl mb-4 font-mono">
           Your Ultimate Trip Planning Companion.
         </h1>
         <p className="text-2xl text-black/60 mb-4">
