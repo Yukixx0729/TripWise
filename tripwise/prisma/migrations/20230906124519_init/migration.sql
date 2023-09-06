@@ -29,6 +29,7 @@ CREATE TABLE "Plan" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "entryId" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
 
     CONSTRAINT "Plan_pkey" PRIMARY KEY ("id")
 );

@@ -45,9 +45,10 @@ model Plan {
   entryId String
   entry   PlanEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
 
-  userId String
+  userId String @db.Text
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+  
+  content String
   @@unique([entryId])
   @@index([userId])
 }
