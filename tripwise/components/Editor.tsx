@@ -12,18 +12,26 @@ const Form = ({ entry }) => {
   const [departDate, setDepartDate] = useState("");
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(entry.plan ? entry.plan.content : " ");
-
+  const [error, setError] = useState("");
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log(destination, arrivalDate, departDate);
-    let date1 = arrivalDate + "T00:00:00.000Z";
-    let date2 = departDate + "T00:00:00.000Z";
-    const updated = await updateEntry(destination, date1, date2, entry.id);
+    let date1 = new Date(arrivalDate);
+    let date2 = new Date(departDate);
+    let current = new Date();
+    if (date1 > current || date2 <= date1) {
+      setError("Invalid date");
+      setLoading(false);
+      return;
+    }
 
+    const updated = await updateEntry(destination, date1, date2, entry.id);
     setLoading(false);
+    // setValue(updated.updatePlan.content);
     router.push(`/plan/${entry.id}`);
   };
+
+  const handleOnclick = async () => {};
 
   return (
     <div>
@@ -69,16 +77,31 @@ const Form = ({ entry }) => {
               Submit
             </button>
           </div>
+          {error && <div className="text-red-400">{error}</div>}
         </div>
       </form>
       <div className="w-full h-full ">
         <div>
+          <h1 className="text-center text-2xl">My Trip Plan🌞</h1>
           {loading && <div>...loading</div>}
-          <textarea
-            className="w-full h-screen p-8  outline-none "
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
+          {!loading && (
+            <div className="flex flex-row">
+              <textarea
+                className="w-full h-screen p-8  outline-none "
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              />
+              <div>
+                {" "}
+                <button
+                  className="bg-blue-400 px-4 py-2 rounded-lg "
+                  onClick={handleOnclick}
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

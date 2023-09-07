@@ -38,3 +38,17 @@ export const PATCH = async (request: Request, { params }) => {
   });
   return NextResponse.json({ data: { ...updateEntry, updatePlan } });
 };
+
+export const DELETE = async (request: Request) => {
+  const user = await getUserByClientID();
+  const { id } = await request.json();
+  await prisma.planEntry.delete({
+    where: {
+      userId_id: {
+        userId: user.id,
+        id: id,
+      },
+    },
+  });
+  return NextResponse.json({ message: "deleted" });
+};

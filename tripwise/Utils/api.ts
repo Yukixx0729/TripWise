@@ -30,3 +30,12 @@ export const updateEntry = async (
     return data.data;
   }
 };
+
+export const deleteEntry = async (id: string) => {
+  const res = await fetch(
+    new Request(createURL(`/api/plan/${id}`), {
+      method: "DELETE",
+      body: JSON.stringify({ id }),
+    })
+  );
+};
