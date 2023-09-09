@@ -1,4 +1,4 @@
-1. fix the editor API to only update the content
-2. find a way to display the latest data after update/create
-3. implement the Q & A if i have time 
+
+
+
 4. deploy

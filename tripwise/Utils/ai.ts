@@ -15,7 +15,7 @@ export const generatePlan = async (
     messages: [
       {
         role: "user",
-        content: `Could you please make me a trip plan , the location is ${destination}, and arrive date is ${arrivalDate}, depart date is ${departDate}. And format your response to starting with 'Day 1 ', no matter what!`,
+        content: `Could you please make me a trip plan , the location is ${destination}, and arrive date is ${arrivalDate}, depart date is ${departDate}. And format your response to starting with 'Day 1 ' and please only generate the trip plan without the travel time, no matter what!`,
       },
     ],
     model: "gpt-3.5-turbo",

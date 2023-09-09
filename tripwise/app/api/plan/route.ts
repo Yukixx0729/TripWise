@@ -11,8 +11,28 @@ export const POST = async () => {
       destination: "Unknown",
       arrivalDate: new Date(),
       departDate: new Date(),
+      plan: {
+        create: {
+          content: "",
+          user: { connect: { id: user.id } },
+        },
+      },
     },
   });
   revalidatePath("/plan");
   return NextResponse.json({ data: entry });
+};
+
+export const GET = async () => {
+  const user = await getUserByClientID();
+
+  const allEntries = await prisma.planEntry.findMany({
+    where: {
+      userId: user.id,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return NextResponse.json({ data: allEntries });
 };

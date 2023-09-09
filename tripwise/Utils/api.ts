@@ -39,3 +39,43 @@ export const deleteEntry = async (id: string) => {
     })
   );
 };
+
+export const updateContent = async (content: string, id: string) => {
+  const res = await fetch(
+    new Request(createURL(`/api/content/${id}`), {
+      method: "PATCH",
+      body: JSON.stringify({ content }),
+    })
+  );
+  console.log(res);
+  if (res.ok) {
+    const data = await res.json();
+    return data.data;
+  }
+};
+
+export const getAllEntries = async () => {
+  const res = await fetch(
+    new Request(createURL(`/api/plan`), {
+      method: "GET",
+    })
+  );
+  if (res.ok) {
+    const data = await res.json();
+    console.log(data);
+    return data.data;
+  }
+};
+
+export const getSingleEntry = async (id: string) => {
+  const res = await fetch(
+    new Request(createURL(`/api/plan/${id}`), {
+      method: "GET",
+    })
+  );
+  if (res.ok) {
+    const data = await res.json();
+    console.log(data);
+    return data.data;
+  }
+};

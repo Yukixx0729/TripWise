@@ -11,8 +11,11 @@ const NewEntryCard = () => {
     router.push(`/plan/${data.id}`);
   };
   return (
-    <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow cursor-pointer">
-      <div className=" px-4 py-5 sm:p:6 " onClick={handleOnClick}>
+    <div
+      className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow cursor-pointer"
+      onClick={handleOnClick}
+    >
+      <div className=" px-4 py-5 sm:p:6 ">
         <span className="text-3xl ">+ new plan</span>
       </div>
     </div>

@@ -52,3 +52,19 @@ export const DELETE = async (request: Request) => {
   });
   return NextResponse.json({ message: "deleted" });
 };
+
+export const GET = async (request: Request, { params }) => {
+  const user = await getUserByClientID();
+  const entry = await prisma.planEntry.findUnique({
+    where: {
+      userId_id: {
+        userId: user.id,
+        id: params.id,
+      },
+    },
+    include: {
+      plan: true,
+    },
+  });
+  return NextResponse.json({ data: entry });
+};
