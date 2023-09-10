@@ -37,7 +37,7 @@ export const PATCH = async (
   });
 
   const aiPlan = await generatePlan(destination, arrivalDate, departDate);
-
+  console.log(aiPlan);
   if (!aiPlan)
     return NextResponse.json({
       message: " Something goes wrong, try again later",

@@ -75,6 +75,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
     setLoading(false);
     const singleEntry = await getSingleEntry(entry.id);
     setValue(singleEntry.plan.content);
+    console.log(singleEntry.plan.content);
   };
 
   const handleOnclick = async () => {
