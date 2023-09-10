@@ -68,7 +68,12 @@ const Form: React.FC<FormProps> = ({ id }) => {
       return;
     }
 
-    await updateEntry(destination, date1, date2, entry.id);
+    await updateEntry(
+      destination,
+      date1.toISOString(),
+      date2.toISOString(),
+      entry.id
+    );
     setLoading(false);
     const singleEntry = await getSingleEntry(entry.id);
     setValue(singleEntry.plan.content);

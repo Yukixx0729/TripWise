@@ -3,7 +3,10 @@ import { getUserByClientID } from "@/Utils/auth";
 import { prisma } from "@/Utils/db";
 import { NextResponse } from "next/server";
 
-export const PATCH = async (request: Request, { params }) => {
+export const PATCH = async (
+  request: Request,
+  { params }: { params: { id: string } }
+) => {
   const { destination, arrivalDate, departDate } = await request.json();
   const user = await getUserByClientID();
   const updateEntry = await prisma.planEntry.update({
@@ -21,7 +24,11 @@ export const PATCH = async (request: Request, { params }) => {
   });
 
   const aiPlan = await generatePlan(destination, arrivalDate, departDate);
-  console.log(aiPlan);
+
+  if (!aiPlan)
+    return NextResponse.json({
+      message: " Something goes wrong, try again later",
+    });
   const updatePlan = await prisma.plan.upsert({
     where: {
       entryId: updateEntry.id,
@@ -53,7 +60,10 @@ export const DELETE = async (request: Request) => {
   return NextResponse.json({ message: "deleted" });
 };
 
-export const GET = async (request: Request, { params }) => {
+export const GET = async (
+  request: Request,
+  { params }: { params: { id: string } }
+) => {
   const user = await getUserByClientID();
   const entry = await prisma.planEntry.findUnique({
     where: {
