@@ -38,7 +38,6 @@ const Map = () => {
     async function getLocations() {
       const entries = await getAllEntries();
       setEntries(entries);
-      console.log(entries);
     }
     getLocations();
   }, []);

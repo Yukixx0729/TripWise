@@ -49,8 +49,6 @@ const Form: React.FC<FormProps> = ({ id }) => {
     fetchData();
   }, []);
 
-  console.log(value);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setError("");
     setLoading(true);
@@ -81,7 +79,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
 
   const handleOnclick = async () => {
     setLoading(true);
-    console.log("value", value, entry.id);
+
     await updateContent(value, entry.id);
     setLoading(false);
     const singleEntry = await getSingleEntry(entry.id);

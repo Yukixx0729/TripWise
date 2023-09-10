@@ -47,7 +47,7 @@ export const updateContent = async (content: string, id: string) => {
       body: JSON.stringify({ content }),
     })
   );
-  console.log(res);
+
   if (res.ok) {
     const data = await res.json();
     return data.data;
@@ -62,7 +62,7 @@ export const getAllEntries = async () => {
   );
   if (res.ok) {
     const data = await res.json();
-    console.log(data);
+
     return data.data;
   }
 };
@@ -75,7 +75,7 @@ export const getSingleEntry = async (id: string) => {
   );
   if (res.ok) {
     const data = await res.json();
-    console.log(data);
+
     return data.data;
   }
 };

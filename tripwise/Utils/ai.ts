@@ -20,6 +20,6 @@ export const generatePlan = async (
     ],
     model: "gpt-3.5-turbo",
   });
-  console.log(plan.choices[0].message.content);
+
   return plan.choices[0].message.content;
 };

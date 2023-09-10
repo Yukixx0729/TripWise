@@ -7,7 +7,7 @@ const NewEntryCard = () => {
   const router = useRouter();
   const handleOnClick = async () => {
     const data = await createNewEntry();
-    console.log(data);
+
     router.push(`/plan/${data.id}`);
   };
   return (
