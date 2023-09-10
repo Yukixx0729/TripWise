@@ -12,7 +12,7 @@ const NewEntryCard = () => {
   };
   return (
     <div
-      className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow cursor-pointer"
+      className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white  cursor-pointer shadow-lg"
       onClick={handleOnClick}
     >
       <div className=" px-4 py-5 sm:p:6 ">

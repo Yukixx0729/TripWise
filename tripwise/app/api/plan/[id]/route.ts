@@ -3,12 +3,23 @@ import { getUserByClientID } from "@/Utils/auth";
 import { prisma } from "@/Utils/db";
 import { NextResponse } from "next/server";
 
+const apikey = process.env.API_KEY;
+
 export const PATCH = async (
   request: Request,
   { params }: { params: { id: string } }
 ) => {
   const { destination, arrivalDate, departDate } = await request.json();
   const user = await getUserByClientID();
+
+  const response = await fetch(
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${destination}&key=${apikey}`
+  );
+  const data = await response.json();
+  const positon = data.results[0].geometry.location;
+  const lat = positon.lat;
+  const lng = positon.lng;
+
   const updateEntry = await prisma.planEntry.update({
     where: {
       userId_id: {
@@ -20,6 +31,8 @@ export const PATCH = async (
       destination,
       arrivalDate,
       departDate,
+      lat: lat || null,
+      lng: lng || null,
     },
   });
 

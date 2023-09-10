@@ -2,10 +2,8 @@
 
 import { deleteEntry } from "@/Utils/api";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+
 const EntryCard = ({ entry }: any) => {
-  const router = useRouter();
-  console.log(entry.destination);
   const date = new Date(entry.createdAt).toDateString();
   const arrivalDate = new Date(entry.arrivalDate).toDateString();
   const departDate = new Date(entry.departDate).toDateString();

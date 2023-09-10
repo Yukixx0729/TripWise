@@ -17,6 +17,8 @@ CREATE TABLE "PlanEntry" (
     "destination" TEXT NOT NULL,
     "arrivalDate" TIMESTAMP(3) NOT NULL,
     "departDate" TIMESTAMP(3) NOT NULL,
+    "lat" INTEGER,
+    "lng" INTEGER,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "PlanEntry_pkey" PRIMARY KEY ("id")

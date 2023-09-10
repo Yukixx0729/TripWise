@@ -89,12 +89,12 @@ const Form: React.FC<FormProps> = ({ id }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col p-7">
+    <div className="text-center">
+      <form onSubmit={handleSubmit} className="flex flex-col p-7 ">
+        <div className="shadow-md">
           <h1 className="text-2xl mb-5">Start your ideal trip here!</h1>
-          <div className="mb-2">
-            <label className="text-lg">Location: </label>
+          <div className="mb-2 ">
+            <label className="text-lg">City : </label>
             <input
               className="ml-2 border-2 border-black-500"
               name="destination"
@@ -115,7 +115,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
               required
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-2 ">
             <label className="text-lg">Depart date: </label>
             <input
               name="departDate"
@@ -128,7 +128,10 @@ const Form: React.FC<FormProps> = ({ id }) => {
             />
           </div>
           <div className="mb-2 ">
-            <button className="bg-blue-400 px-4 py-2 rounded-lg " type="submit">
+            <button
+              className="bg-blue-400 px-4 py-2 rounded-lg mt-2"
+              type="submit"
+            >
               Submit
             </button>
           </div>
@@ -137,7 +140,7 @@ const Form: React.FC<FormProps> = ({ id }) => {
       </form>
       <div className="w-full h-full ">
         <div>
-          <h1 className="text-center text-2xl mb-4">My Trip Plan🌞</h1>
+          <h1 className="text-center text-2xl mb-4 mt-4">My Trip Plan🌞</h1>
           {loading && <div>...Your trip plan is being generated.</div>}
           {!loading && (
             <div className="flex flex-col min-h-fit">

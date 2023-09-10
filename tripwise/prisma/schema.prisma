@@ -28,7 +28,8 @@ model PlanEntry {
   destination String
   arrivalDate DateTime
   departDate  DateTime
-
+  lat Int?
+  lng Int?
   userId String
   user   User   @relation(fields: [userId], references: [id])
 

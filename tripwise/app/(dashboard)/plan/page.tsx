@@ -19,11 +19,13 @@ type Entry = {
 
 function PlanPage() {
   const [entries, setEntries] = useState<Entry[]>([]);
-
+  const [isload, setIsLoad] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoad(true);
       const entries = await getAllEntries();
       setEntries(entries);
+      setIsLoad(false);
     };
 
     fetchData();
@@ -38,11 +40,12 @@ function PlanPage() {
       <h2 className="text-2xl mb-8 ">Trip Plans</h2>
       <div className="grid grid-cols-4 gap-3">
         <NewEntryCard />
+        {isload && <div>...loading</div>}
         {entries
           ? entries.map((entry) => (
               <div
                 key={entry.id}
-                className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow flex flex-col justify-between"
+                className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white  flex flex-col justify-between shadow-lg"
               >
                 <Link href={`/plan/${entry.id}`}>
                   <EntryCard entry={entry} />
