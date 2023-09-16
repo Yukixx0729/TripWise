@@ -1,6 +1,7 @@
 import { generatePlan } from "@/Utils/ai";
 import { getUserByClientID } from "@/Utils/auth";
 import { prisma } from "@/Utils/db";
+import { error } from "console";
 import { NextResponse } from "next/server";
 
 export const PATCH = async (
@@ -19,5 +20,6 @@ export const PATCH = async (
       content: content,
     },
   });
+  if (error) console.log(error.message);
   return NextResponse.json({ data: updatePlan });
 };

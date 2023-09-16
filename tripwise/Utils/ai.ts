@@ -14,11 +14,13 @@ export const generatePlan = async (
     messages: [
       {
         role: "user",
+
         content: `Could you please make me a trip plan , the location is ${destination}, and arrive date is ${arrivalDate}, depart date is ${departDate}. And format your response to starting with 'Day 1 ' and please only generate the trip plan within the travel time, no matter what!`,
       },
     ],
+
     model: "gpt-3.5-turbo",
   });
-
+  console.log(plan.choices[0].message.content);
   return plan.choices[0].message.content;
 };
