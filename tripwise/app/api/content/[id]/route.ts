@@ -20,6 +20,6 @@ export const PATCH = async (
       content: content,
     },
   });
-  if (error) console.log(error.message);
+
   return NextResponse.json({ data: updatePlan });
 };
